@@ -129,13 +129,20 @@ button {
   to { transform: translate(var(--x), var(--y)) scale(2); opacity: 0; }
 }
 
-/* images */
+/* images floating and gentle animation */
 .floating-img {
   position: absolute;
   width: 220px;
   opacity: 0;
-  transform: translateY(60px) scale(0.95);
+  transform: translateY(0px) scale(0.95);
   transition: opacity 1.6s ease, transform 1.6s ease;
+  z-index: 3;
+  animation: floatUpDown 4s ease-in-out infinite alternate;
+}
+
+@keyframes floatUpDown {
+  0% { transform: translateY(0px) scale(1); }
+  100% { transform: translateY(-20px) scale(1); }
 }
 
 .show-img {
@@ -190,7 +197,7 @@ You're the bestest girlfriend ever <3</div>
   Thank you for everything baby and thank you for trying to understand me. I love you from the bottom of my heart and I will always be there for you.<br>
   I just made this aise hi ahahah dont think much of it, boards khatam hone do fir Ill get you much much more stuff babyyyy. <br>
   I LOVE YOU ZYNAH YOURE THE BEST GIRLFRIEND I COULD HAVE ASKED FOR. (Future wife 😍💕) <br>
-  Thank you for always being their for me and for always putting efforts. <br>
+  Thank you for always being there for me and for always putting efforts. <br>
   I love how you tell me about whatever makes you uncomfortable or feel bad.<br>
   I just love everything about you and especially spending time with you my love. Mwah baby I love youuuuuuuuuuu<br>
 </div>
@@ -198,6 +205,7 @@ You're the bestest girlfriend ever <3</div>
 <audio id="song" src="my_kind_of_woman.mp3" preload="auto"></audio>
 
 <img src="img1.jpg" class="floating-img" id="img1">
+<img src="img2.jpg" class="floating-img" id="img2">
 
 <script>
 /* background particles */
@@ -279,28 +287,20 @@ yesBtn.addEventListener("click", () => {
   }
 
   const img1 = document.getElementById("img1");
+  const img2 = document.getElementById("img2");
 
-  img1.style.display =  "block";
+  img1.style.display = img2.style.display = "block";
+
+  // Float images above the text
   img1.style.left = "10%";
-  img1.style.top = "15%";
+  img1.style.top = "20%"; // higher
+  img2.style.right = "10%";
+  img2.style.top = "25%"; // higher than bottom text
 
-  setTimeout(() => img1.classList.add("show-img"), 650);
-   
+  setTimeout(() => img1.classList.add("show-img"), 700);
+  setTimeout(() => img2.classList.add("show-img"), 1100);
 });
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
